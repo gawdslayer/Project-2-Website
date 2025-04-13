@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> My Interactive Portfolio Website</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <style>
+body {
+        margin: 0;
+        overflow-x: hidden;
+        position: relative;
+    }
+    
+    #bg-animation {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+    }
+    
+    #content {
+        position: relative;
+        z-index: 1; 
+    }
+
+    .rooms-preview {
+        width: 100%;
+        height: 200px;
+        overflow: hidden;
+        border-radius: 8px;
+        margin-bottom: 15px;
+    }
+
+    .room-preview-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+    }
+
+    .room-preview-image:hover {
+        transform: scale(1.05);
+    }
+</style>
+</head>
+<body>
+    <div id="bg-animation"></div>
+
+    <div id="content">
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="assets/logo3.jpeg" alt="Portfolio Logo" class="light-logo">
+                <img src="assets/logoblack.jpg" alt="Portfolio Logo" class="dark-logo">
+            </div>
+            <div class="nav-right">
+                <ul class="nav-links">
+                    <li><a href="#home" class="nav-link">Home</a></li>
+                    <li><a href="#about" class="nav-link">About</a></li>
+                    <li><a href="#projects" class="nav-link">Projects</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+                <div class="theme-switch-wrapper">
+                    <label class="theme-switch" for="checkbox">
+                        <input type="checkbox" id="checkbox" />
+                        <div class="slider round"></div>
+                    </label>
+                    <em>Dark Mode</em>
+                </div>
+                <button class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Gurpreet Kullar</h1>
+            <p> Future Full-Stack Developer | UI/UX Enthusiast | Creative Problem Solver</p>
+            <div class="cta-buttons">
+                <a href="#projects" class="btn primary">View My Work</a>
+                <a href="#contact" class="btn secondary">Contact Me</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="about-container">
+            <div class="about-header">
+                <h2>About Me</h2>
+                <div class="about-divider"></div>
+            </div>
+            <div class="about-content">
+                <div class="about-image">
+                    <div class="image-wrapper">
+                        <img src="assets/profilepic2.png" alt="Profile Image" class="light-profile">
+                        <img src="assets/spongebatman.png" alt="Profile Image" class="dark-profile">
+                        <div class="image-overlay"></div>
+                    </div>
+                </div>
+                <div class="about-text">
+                    <h3>Full-Stack Developer & UI/UX Enthusiast</h3>
+                    <p>I'm a passionate developer with expertise in creating interactive web experiences. My focus is on building responsive, user-friendly applications that solve real-world problems.</p>
+                    <div class="about-stats">
+                        <div class="stat-item">
+                            <span class="stat-number">1+</span>
+                            <span class="stat-label">Years Experience</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">4+</span>
+                            <span class="stat-label">Projects Completed</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">5+</span>
+                            <span class="stat-label">Soon to be Happy Clients</span>
+                        </div>
+                    </div>
+                    <div class="skills">
+                        <h4>Technical Skills</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag">JavaScript</span>
+                            <span class="skill-tag">HTML5</span>
+                            <span class="skill-tag">CSS3</span>
+                            <span class="skill-tag">React *not yet*</span>
+                            <span class="skill-tag">Node.js *not yet*</span>
+                            <span class="skill-tag">API Integration</span>
+                            <span class="skill-tag">UI/UX Design</span>
+                            <span class="skill-tag">Responsive Design</span>
+                        </div>
+                    </div>
+                    <div class="about-cta">
+                        <a href="#contact" class="btn primary">Hire Me</a>
+                        <a href="#projects" class="btn secondary">View Projects</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="projects-container">
+            <div class="projects-header">
+                <h2>Interactive Projects</h2>
+                <div class="projects-divider"></div>
+                <p class="projects-subtitle">Explore my latest work and interactive applications</p>
+            </div>
+            
+            <div class="projects-grid">
+                <!-- Random Image Loader Project -->
+                <div class="project-card">
+                    <div class="project-icon">
+                        <i class="fas fa-images"></i>
+                    </div>
+                    <h3>Random Image Loader</h3>
+                    <p class="project-description">A dynamic image gallery that loads random images with smooth transitions and hover effects.</p>
+                    <div class="image-container">
+                        <div class="images-wrapper">
+                            <img src="https://picsum.photos/200/300?random=1" alt="Random Image 1">
+                            <img src="https://picsum.photos/200/300?random=2" alt="Random Image 2">
+                            <img src="https://picsum.photos/200/300?random=3" alt="Random Image 3">
+                            <img src="https://picsum.photos/200/300?random=4" alt="Random Image 4">
+                            <img src="https://picsum.photos/200/300?random=5" alt="Random Image 5">
+                            <img src="https://picsum.photos/200/300?random=6" alt="Random Image 6">
+                            <img src="https://picsum.photos/200/300?random=7" alt="Random Image 7">
+                        </div>
+                        <button class="btn project-btn" aria-label="Load more random images">
+                            <i class="fas fa-plus" aria-hidden="true"></i>
+                            Load More Images
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Tip Calculator Project -->
+                <div class="project-card">
+                    <div class="project-icon">
+                        <i class="fas fa-calculator"></i>
+                    </div>
+                    <h3>Tip Calculator</h3>
+                    <p class="project-description">A user-friendly calculator that helps you determine the perfect tip amount for any service.</p>
+                    <div class="calculator-container">
+                        <div class="input-group">
+                            <label for="bill">Bill Amount ($)</label>
+                            <div class="input-wrapper">
+                                <i class="fas fa-dollar-sign"></i>
+                                <input type="number" id="bill" placeholder="Enter bill amount" required>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label for="tip">Tip Percentage (%)</label>
+                            <div class="input-wrapper">
+                                <i class="fas fa-percent"></i>
+                                <input type="number" id="tip" placeholder="Enter tip percentage" required>
+                            </div>
+                        </div>
+                        <button id="calculate" class="btn project-btn">
+                            <i class="fas fa-calculator"></i>
+                            Calculate Total
+                        </button>
+                        <div class="result-container">
+                            <label>Total Amount:</label>
+                            <span id="total" class="total-amount">$0.00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Weather App Project -->
+                <div class="project-card">
+                    <div class="project-icon">
+                        <i class="fas fa-cloud-sun"></i>
+                    </div>
+                    <h3>Weather App</h3>
+                    <p class="project-description">Get real-time weather updates for any city with a clean and intuitive interface.</p>
+                    <div class="weather-container">
+                        <div class="weather-search">
+                            <div class="input-wrapper">
+                                <i class="fas fa-search"></i>
+                                <input type="text" id="city-input" placeholder="Enter city name">
+                            </div>
+                            <button id="search-weather" class="btn project-btn">
+                                <i class="fas fa-search"></i>
+                                Search
+                            </button>
+                        </div>
+                        <div class="weather-info">
+                            <div class="weather-header">
+                                <h4 id="city-name">Search for a city</h4>
+                                <p id="date"></p>
+                            </div>
+                            <div class="weather-details">
+                                <div class="weather-main">
+                                    <img id="weather-icon" src="" alt="Weather icon">
+                                    <h2 id="temperature">--°C</h2>
+                                </div>
+                                <div class="weather-stats">
+                                    <div class="stat">
+                                        <i class="fas fa-tint"></i>
+                                        <p>Humidity: <span id="humidity">--%</span></p>
+                                    </div>
+                                    <div class="stat">
+                                        <i class="fas fa-wind"></i>
+                                        <p>Wind: <span id="wind-speed">-- m/s</span></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Movie Search App -->
+                <div class="project-card">
+                    <div class="project-icon">
+                        <i class="fas fa-film"></i>
+                    </div>
+                    <h3>Movie Search App</h3>
+                    <p class="project-description">Search and discover movies with detailed information and beautiful movie cards.</p>
+                    <div class="movie-container">
+                        <div class="movie-search">
+                            <div class="input-wrapper">
+                                <i class="fas fa-search"></i>
+                                <input type="text" id="movie-input" placeholder="Search for a movie">
+                            </div>
+                            <button id="search-movie" class="btn project-btn">
+                                <i class="fas fa-search"></i>
+                                Search
+                            </button>
+                        </div>
+                        <div class="movie-results" id="movie-results">
+                            <div class="no-results">
+                                <i class="fas fa-film"></i>
+                                <p>Search for your favorite movies</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3D Rooms Project -->
+                <div class="project-card">
+                    <div class="project-icon">
+                        <i class="fas fa-cube"></i>
+                    </div>
+                    <h3>3D Rooms</h3>
+                    <p class="project-description">An interactive 3D room creation tool that allows users to design and visualize custom spaces.</p>
+                    <div class="rooms-container">
+                        <div class="rooms-preview">
+                            <img src="assets/myroom.png" alt="3D Room Preview" class="room-preview-image">
+                        </div>
+                        <a href="https://rooms.xyz/gawdslayer/myfirstroom" class="btn project-btn" id="view-room">
+                            <i class="fas fa-external-link-alt"></i>
+                            View My Room
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <h2>Get In Touch</h2>
+        <div class="contact-content">
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <p>Noemail4u@nomail.com</p>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <p>+1 9876543210</p>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <p>Australia/Canada</p>
+                </div>
+            </div>
+            <div class="social-links">
+                <a href="https://github.com/gawdslayer" class="social-link"><i class="fab fa-github"></i></a>
+                <a href="https://linkedin.com" class="social-link"><i class="fab fa-linkedin"></i></a>
+                <a href="https://x.com/" class="social-link"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Gurpreet Kullar. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</div>
+<script>
+    // Initialize the scene, camera, and renderer
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true }); // Add alpha: true for transparency
+    
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(window.devicePixelRatio);
+    document.getElementById('bg-animation').appendChild(renderer.domElement); // Attach to our container
+    
+    // Set up camera position
+    camera.position.z = 30;
+    
+    // Create particles
+    const particlesGeometry = new THREE.BufferGeometry();
+    const particleCount = 5000;
+    
+    const posArray = new Float32Array(particleCount * 3);
+    const colors = new Float32Array(particleCount * 3);
+    
+    // Create random positions and colors for particles
+    for (let i = 0; i < particleCount * 3; i += 3) {
+        // Position
+        posArray[i] = (Math.random() - 0.5) * 100;
+        posArray[i + 1] = (Math.random() - 0.5) * 100;
+        posArray[i + 2] = (Math.random() - 0.5) * 100;
+        
+        // Color
+        colors[i] = Math.random();
+        colors[i + 1] = Math.random();
+        colors[i + 2] = Math.random() * 0.5 + 0.5; // More blue tint
+    }
+    
+    particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+    particlesGeometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+    
+    // Create particle material
+    const particlesMaterial = new THREE.PointsMaterial({
+        size: 0.1,
+        vertexColors: true,
+        transparent: true,
+        opacity: 0.8,
+    });
+    
+    // Create the particle system
+    const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
+    scene.add(particlesMesh);
+    
+    // Add ambient light to the scene
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+    scene.add(ambientLight);
+    
+    // Mouse interaction
+    let mouseX = 0;
+    let mouseY = 0;
+    
+    document.addEventListener('mousemove', (event) => {
+        mouseX = (event.clientX / window.innerWidth) * 2 - 1;
+        mouseY = -(event.clientY / window.innerHeight) * 2 + 1;
+    });
+    
+    // Handle window resize
+    window.addEventListener('resize', () => {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+    
+    // Animation loop
+    function animate() {
+        requestAnimationFrame(animate);
+        
+        // Rotate particles based on time and mouse position
+        particlesMesh.rotation.x += 0.0005;
+        particlesMesh.rotation.y += 0.0005;
+        
+        // Respond to mouse movement
+        particlesMesh.rotation.y += mouseX * 0.0005;
+        particlesMesh.rotation.x += mouseY * 0.0005;
+        
+        renderer.render(scene, camera);
+    }
+    
+    animate();
+</script>
+</body>
+</html>
